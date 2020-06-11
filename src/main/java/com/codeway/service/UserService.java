@@ -1,6 +1,8 @@
 package com.codeway.service;
 
+import com.codeway.dao.UserDao;
 import com.codeway.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,6 +13,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Service
 public class UserService {
 
+	@Autowired(required = false)
+	private UserDao userDao;
+
     private static final AtomicInteger counter = new AtomicInteger();
     private static List<User> users = new ArrayList<>(
             Arrays.asList(
@@ -19,6 +24,10 @@ public class UserService {
 
     public List<User> getAll() {
         return users;
+    }
+
+    public List<User> getAllFromDao() {
+        return userDao.findAll();
     }
     
     public User findById(int id) {
