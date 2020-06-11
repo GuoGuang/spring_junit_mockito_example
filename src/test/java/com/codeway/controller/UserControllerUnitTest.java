@@ -6,17 +6,22 @@ import com.codeway.controller.UserController;
 import com.codeway.filter.CORSFilter;
 import com.codeway.model.User;
 import com.codeway.service.UserService;
+import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.*;
+import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.Arrays;
 import java.util.List;
@@ -24,6 +29,8 @@ import static org.mockito.Mockito.*;
 import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.junit.Assert.*;
+
 
 /**
  * 单元测试
@@ -56,6 +63,17 @@ public class UserControllerUnitTest {
                 .addFilters(new CORSFilter())
                 .build();
     }
+
+    @Ignore
+	@Test
+	public void test_page() throws Exception {
+		/*MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/welcomeController").param("pn", "5"))
+				.andReturn();
+		//请求成功以后，请求域中会有pageInfo；我们可以取出pageInfo进行验证
+		MockHttpServletRequest request = result.getRequest();
+		PageInfo pi = (PageInfo) request.getAttribute("pageInfo");
+		assertEquals(1,pi.getPageNum());*/
+	}
 
 
     @Test
