@@ -1,4 +1,4 @@
-package com.codeway.test;
+package com.codeway.controller;
 
 import com.codeway.config.WebConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,6 +24,10 @@ import static org.mockito.Mockito.*;
 import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+/**
+ * 单元测试
+ */
 
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)

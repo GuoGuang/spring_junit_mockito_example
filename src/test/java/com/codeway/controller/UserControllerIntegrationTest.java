@@ -1,4 +1,4 @@
-package com.codeway.test;
+package com.codeway.controller;
 
 import com.codeway.config.WebConfig;
 import com.codeway.model.User;
@@ -26,18 +26,19 @@ import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
+/**
+ * 集成测试，通过HTTP请求接口，类似Postman
+ */
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {WebConfig.class})
 public class UserControllerIntegrationTest {
 
-    private static final String BASE_URI = "http://localhost:8081/spring-mvc-rest/users";
+    private static final String BASE_URI = "http://localhost:8080/aaa/user";
     private static final int UNKNOWN_ID = Integer.MAX_VALUE;
 
     @Autowired
     private RestTemplate template;
-
-    // =========================================== Get All Users ==========================================
 
     @Test
     public void test_get_all_success(){
@@ -45,8 +46,6 @@ public class UserControllerIntegrationTest {
         assertThat(response.getStatusCode(), is(HttpStatus.OK));
         validateCORSHttpHeaders(response.getHeaders());
     }
-
-    // =========================================== Get User By ID =========================================
 
     @Test
     public void test_get_by_id_success(){
@@ -68,8 +67,6 @@ public class UserControllerIntegrationTest {
         }
     }
 
-    // =========================================== Create New User ========================================
-
     @Test
     public void test_create_new_user_success(){
         User newUser = new User("new username_" + Math.random());
@@ -89,8 +86,6 @@ public class UserControllerIntegrationTest {
         }
     }
 
-    // =========================================== Update Existing User ===================================
-
     @Test
     public void test_update_user_success(){
         User existingUser = new User(2, "John Snow Updated");
@@ -108,8 +103,6 @@ public class UserControllerIntegrationTest {
             validateCORSHttpHeaders(e.getResponseHeaders());
         }
     }
-
-    // =========================================== Delete User ============================================
 
     @Test
     public void test_delete_user_success(){
@@ -132,8 +125,6 @@ public class UserControllerIntegrationTest {
         User[] users = response.getBody();
         return users[users.length - 1];
     }
-
-    // =========================================== CORS Headers ===========================================
 
     public void validateCORSHttpHeaders(HttpHeaders headers){
         assertThat(headers.getAccessControlAllowOrigin(), is("*"));
