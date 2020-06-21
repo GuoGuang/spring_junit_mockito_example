@@ -17,13 +17,11 @@ import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 
-import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.fail;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsCollectionContaining.hasItem;
 import static org.hamcrest.core.IsCollectionContaining.hasItems;
 import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 /**
